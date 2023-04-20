@@ -19,13 +19,18 @@
                     <p>Create your account.<br>For Free!</p> <a href="" class="btn">Sign Up</a>
                 </div>
             </div>
+            {% if messages %}
+            {% for i in messages %}
+            <h1>{{i.messages}}</h1>
+            {% endfor %}
+            {% endif %}
             <div class="col-right">
                 <div class="login-form">
                     <h2>Login</h2>
-                    <form method='post' action="loginuser">
+                    <form method='post' action="/logindata/">
                         
-                        <p> <label>Email ID<span>*</span></label> <input type="email" name="email" placeholder="Please Enter Email" required> </p>
-                        <p> <label>Password<span>*</span></label> <input type="password" name="password" placeholder=" Please Enter Password" required> </p>
+                        <p> <label>Email ID<span>*</span></label> <input type="email" name="Email" placeholder="Please Enter Email" required> </p>
+                        <p> <label>Password<span>*</span></label> <input type="password" name="Password" placeholder=" Please Enter Password" required> </p>
                         <p> <input type="submit" value="Sign In"> </p>
                         <p> <a href="">Forgot password?</a> </p>
                     </form>
