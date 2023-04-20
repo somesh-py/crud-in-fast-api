@@ -53,9 +53,13 @@ async def all_user(data: Get_Person):
 
 @app.put("/update/{id}")
 async def update(data: Update_Person):
-    id = data.id
-    user = await User.filter(id=id).update(id=id, email=data.email, name=data.name, phone=data.phone, password=data.password)
-    return user
+    if await User.filter(email=data.email):
+        return {"status":False,"messages":"Email already Exists"}
+    elif await User.filter(phone=data.phone):
+        return {"status":False,"messages":"Phone number is already Exists"}
+    else:
+        user = await User.filter(id=data.id).update(email=data.email, name=data.name, phone=data.phone, password=get_password_hash(data.password))
+        return user
 
 
 @app.delete("/delete_user/{id}")
