@@ -2,9 +2,11 @@ from fastapi import FastAPI
 from tortoise import Tortoise
 from tortoise.contrib.fastapi import register_tortoise
 from app import router as UserRoute
+from app import api as ApiRouter
 
 app=FastAPI()
 app.include_router(UserRoute.router)
+app.include_router(ApiRouter.app,tags=["api"])
 
 register_tortoise(
     app,

@@ -11,3 +11,16 @@ class Person(BaseModel):
 class LoginPerson(BaseModel):
     email:str
     password:str
+
+class Delete(BaseModel):
+    id:int
+
+class Get_Person(BaseModel):
+    id:int
+
+class Update_Person(BaseModel):
+    id:int
+    email:str
+    name:str
+    phone:str
+    password:str
